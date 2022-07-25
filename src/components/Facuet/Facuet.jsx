@@ -87,12 +87,6 @@ const Facuet = ({ oneTokenPrice }) => {
     if (acc == "No Wallet") {
       try {
 
-        // let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
-        // let tokenContractOf = new webSupply.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-        // let contractInfo = await contractOf.methods.contractInfo().call();
-        // let myTeam = contractInfo._total_users;
-        // setTeam(myTeam);
-
       } catch (e) {
         console.log("Error while getting data with out meta mask in faucet");
       }
@@ -237,7 +231,7 @@ const Facuet = ({ oneTokenPrice }) => {
   const custody = async () => {
     let acc = await loadWeb3();
     if (acc == "No Wallet") {
-      console.log("Not Connected")
+  
     }
     else {
       try {
@@ -362,7 +356,7 @@ const Facuet = ({ oneTokenPrice }) => {
 
               let trHash = ""
               let allowance = await tokenContractOf.methods.allowance(acc, faucetContractAddress).call();
-              console.log("allowance", allowance);
+              
               if (allowance >= parseFloat(web3.utils.toWei(enteredVal))) {
                 await contractOf.methods.deposit(referral, web3.utils.toWei(enteredVal)).send({
                   from: acc
@@ -520,7 +514,6 @@ const Facuet = ({ oneTokenPrice }) => {
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
         let bal = await tokenContractOf.methods.balanceOf(acc).call();
         bal = await web3.utils.fromWei(bal);
-        // bal = parseFloat(bal).toFixed(3)
         inputEl.current.value = bal;
 
       }
@@ -795,7 +788,6 @@ const Facuet = ({ oneTokenPrice }) => {
       console.log("error while run team drop", e);
     }
   }
-  // console.log("item", showTeamStatus[0].value);
   const aproveafterRunAmount = async () => {
     try {
       let acc = await loadWeb3();

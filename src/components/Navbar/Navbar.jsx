@@ -78,14 +78,14 @@ connectWallet();
                 </Link>
               </Nav>
               <Nav className="me-3">
-                {/* <Link to="/whitepaper" style={{ textDecoration: "none" }}> */}
+                
                 <Nav.Link href="splassive_whitepaper.pdf" download id="navbartext" style={{ textDecoration: "none" }}>
                 {t('Whitepaper.1')}
                 </Nav.Link>
-                {/* </Link> */}
+                
                 <Link to="https://app.pangolin.exchange/#/swap?outputCurrency=0xbc6f589171d6d66eb44ebcc92dffb570db4208da" target="_blank" style={{ textDecoration: "none" }}>
                 <Nav.Link href="https://app.pangolin.exchange/#/swap?outputCurrency=0xbc6f589171d6d66eb44ebcc92dffb570db4208da" target="_blank" id="navbartext">
-                {/* {t('Whitepaper.1')} */}
+                
                 Buy Waves
                 </Nav.Link>
                 </Link>

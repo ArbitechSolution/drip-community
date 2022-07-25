@@ -1,7 +1,7 @@
 let initState = {};
 
 export const UserReducer = (state = initState, action) => {
-  const { type, payload } = action; //object destructring
+  const { type, payload } = action;
   switch (type) {
     case "BALANCE":
       return {

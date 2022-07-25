@@ -103,10 +103,6 @@ function BuySplash() {
 
 if(inputvalue>0)
 {
-
-
-
-    console.log("input_value_here",typeof(inputvalue));
             let input_value_here =web3.utils.toWei(inputvalue)
                         let acc = await loadWeb3()
             let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
@@ -119,20 +115,18 @@ if(inputvalue>0)
                 limit_here = parseFloat(web3.utils.fromWei(limit_here))
                 limit_parWallet_here =parseFloat(web3.utils.fromWei(limit_parWallet_here) );
                 let LimitPlusInput=(limit_here + +inputvalue);
-                console.log("Chek_here",LimitPlusInput)
                 if (LimitPlusInput <= limit_parWallet_here) {
-                    // let b = bigInt(inputvalue)
+                    
                     let calSp = await preSall.methods.calculateSplashforWT(input_value_here).call();
                     calSp= web3.utils.fromWei(calSp)
-                    // calSp= web3.utils.fromWei(calSp)
-                    console.log("caassadasd",calSp);
+                    
+        
                     await preSall.methods.Buy(input_value_here).send({
                         from: acc,
                         value: calSp
 
                     })
                 } else {
-                    console.log("True_heeee", return_Value);
                     toast.error("MAX Limit Exceed")
 
                 }
@@ -166,8 +160,6 @@ if(inputvalue>0)
         let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
         
         if(inputvalue>0){
-            // let myVal=bigInt(parseFloat(inputvalue))
-            // myVal= myVal.toString()
             inputvalue = web3.utils.toWei(inputvalue)
             inputvalue=parseFloat(inputvalue);
             let CalSp = await preSall.methods.calculateSplashforWT(inputvalue.toString()).call();
@@ -192,7 +184,7 @@ if(inputvalue>0)
 
     const contractBalance = async () => {
 
-        console.log("Balace here");
+        
 
         try {
 
@@ -240,8 +232,7 @@ if(inputvalue>0)
         const web3 = window.web3;
 
         let withDraw_valu_here = withDrawValue.current.value;
-        console.log("Balanc here", balanceOf)
-        console.log("Value here", withDraw_valu_here)
+     
 
 
 
@@ -280,7 +271,7 @@ if(inputvalue>0)
             let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
 
             let listingPrice = await preSall.methods.ListingPrice().call();
-            console.log("error while claim", listingPrice);
+         
 
 
             await preSall.methods.addaddressWhitelist().send({
@@ -300,69 +291,13 @@ if(inputvalue>0)
 
 
 
-    // const RemoveAdress_here = async () => {
-
-    //     try {
-    //         let acc = await loadWeb3()
-    //         const web3 = window.web3;
-
-    //         let removeAdressValu_add = RemoveAdress_Value.current.value;
-
-
-
-
-    //         console.log("acc", acc)
-    //         let Token_value = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-
-    //         await Token_value.methods.removeAddressFromWhitelist(removeAdressValu_add).send({
-    //             from: acc
-
-    //         })
-
-    //     }
-    //     catch (e) {
-
-    //         console.log("error while claim", e);
-    //     }
-
-    // }
-
-
-
-
-    // const check_whiteList = async () => {
-
-    //     try {
-    //         let acc = await loadWeb3()
-    //         const web3 = window.web3;
-
-
-
-
-
-    //         let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
-    //         let Arraydata = await preSall.methods.Check_WhitelistAccounts().call();
-    //         console.log("Arry datahhhh", Arraydata)
-    //         setCheckWhiteList(Arraydata)
-
-
-    //     }
-    //     catch (e) {
-
-    //         console.log("error while claim", e);
-    //     }
-
-    // }
-
+    
     const addAddressesToWhitelist = async () => {
 
         try {
             let acc = await loadWeb3()
             const web3 = window.web3;
             let AddAdressValu_add = AddAdress_Value.current.value;
-
-
-            console.log("acc", acc)
             let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
 
             await preSall.methods.addAddressToWhitelist(AddAdressValu_add).send({
@@ -377,17 +312,10 @@ if(inputvalue>0)
         }
 
     }
-
-
-
     useEffect(() => {
 
         setInterval(() => {
-            // check_whiteList();
-            // contractBalance();
-
-
-
+            
         }, 1000);
     }, []);
 
@@ -416,107 +344,7 @@ if(inputvalue>0)
                     </div>
 
                     <div className='row mb-4 mt-2'>
-                            {/* <div className='row'>
-                                <div className='col' >
-                                    <div className="card  text-white"
-                                        style={{ backgroundColor: "#4e2e4b" }}>
-                                        <div className="card-body">
-                                            <div className="landing-page">
-                                                <div className="text-left">
-                                                    <h3>
-                                                        <p
-                                                            className="notranslate fst-italic"
-                                                            style={{ fontSize: "22px" }}
-                                                        >
-                                                            {t("SplassivePresaleDetails.1")}
-                                                        </p>
-                                                    </h3>
-                                                </div>
-                                                <ui>
-                                                    <li>{t("WalletMustbewhitelist.1")}</li>
-                                                    <li>{t("PresalePrice0.00605AVAX.1")}</li>
-                                                    <li>{t("ListingPrice0.03025AVAX.1")}</li>
-                                                    <li>{t("Max5AVAXperWallet.1")}</li>
-                                                </ui>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
-                            {/* <div className='row mt-3'>
-                                <div className='col'>
-                                    <div className="card  text-white"
-                                        style={{ backgroundColor: "#4e2e4b" }}>
-                                        <div className="card-body">
-                                            <div className="landing-page">
-                                                <div className="text-left">
-                                                    <h3>
-                                                        <p
-                                                            className="notranslate fst-italic"
-                                                            style={{ fontSize: "22px" }}>
-                                                            {t("PresaleContractBalance.1")}
-                                                        </p>
-                                                    </h3>
-                                                </div>
-
-                                                <div className="row ">
-                                                    <div className="col-6">
-                                                        <p className="fst-italic" style={{ fontSize: "16px" }}>
-                                                            {t("ContractBalance.1")}
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-6 d-flex justify-content-end" >
-                                                        <span
-                                                            className="fst-italic"
-                                                            style={{ fontSize: "16px" }}
-                                                        >
-                                                            {balanceOf}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="row ">
-                                                    <div className="col-6">
-                                                        <p className="fst-italic" style={{ fontSize: "16px" }}>
-                                                            {t("HARDCAP650AVAX.1")}
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-6 d-flex justify-content-end" >
-                                                        <span
-                                                            className="fst-italic"
-                                                            style={{ fontSize: "16px" }}
-                                                        >
-                                                            {hardcap}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="row ">
-                                                    <div className="col-6">
-                                                        <p className="fst-italic" style={{ fontSize: "16px" }}>
-                                                            {t("SOFTCAP360AVAX.1")}
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-6 d-flex justify-content-end" >
-                                                        <span
-                                                            className="fst-italic"
-                                                            style={{ fontSize: "16px" }}
-                                                        >
-                                                            {softcap}
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div className=''>
-
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
-                        
-
+                            
                         <div className="container col-12 col-xl-6 col-lg-6 mb-12">
                             <div className='row'>
                                 <div className='col'>
@@ -527,7 +355,7 @@ if(inputvalue>0)
                                                 <div className="text-left">
                                                     <h3>
                                                         <p className="notrans.late fst-italic text-center" style={{ fontSize: "30px" }}>
-                                                            {/* {t("PreSale.1")} */}
+                                                            
                                                             {t("SWAP.1")}
                                                             </p>
                                                     </h3>
@@ -561,7 +389,6 @@ if(inputvalue>0)
                                                                     className="form-control"
                                                                     id="__BVID__217"
 
-                                                                    // onChange={() => Onchange_here()}
                                                                 />
                                                                 
                                                             </div>
@@ -573,43 +400,12 @@ if(inputvalue>0)
                                                         </fieldset>
                                                     </div>
                                                 </div>
-
-
-
-                                                {/* <form className="mt-5">
-                                                    <div id="buddy-input">
-                                                        <fieldset className="form-group" id="__BVID__216">
-                                                            <h3>
-                                                                <legend
-                                                                    tabIndex={-1}
-                                                                    className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                                                    id="__BVID__216__BV_label_"
-                                                                >
-                                                                    <p style={{ lineHeight: "40%" }}>
-                                                                        {t("AVAX.1")}
-                                                                    </p>
-                                                                </legend>
-                                                            </h3>
-                                                            <div>
-                                                                <input
-
-                                                                    type="Number"
-                                                                    value={OnChangeValue}
-
-                                                                    className="form-control"
-                                                                    id="__BVID__217"
-
-                                                                />
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                </form> */}
                                                 <div className='row d-flex justify-content-center mt-5'>
                                                     <div className='col-md-6 col-11' >
                                                         <div className="d-grid gap-2">
                                                             <button className='btn fst-italic  mt-2 fw-bold p-2' size="lg" style={{ backgroundColor: "#86ad74", color: "white", fontSize: "25px" }} 
                                                             onClick={() => buySwap()} >
-                                                                {/* {t("BUY SPLASH")} */}
+                                                                
                                                                 {t("SWAP.1")}
                                                             </button>
 
@@ -625,121 +421,6 @@ if(inputvalue>0)
 
                         </div>
                     </div>
-
-                    {/* <div className='row d-flex justify-content-center mb-5'>
-                        <div className='col-lg-11'>
-                            <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
-
-                                <p
-                                    className="card-text fst-italic text-center mt-3 fw-bold"
-                                    style={{ fontSize: "30px" }}
-                                >
-                                    {t("ADMINPANEL.1")}
-                                </p>
-
-                                <div
-                                    className="tab-content"
-                                    id="__BVID__241__BV_tab_container_"
-                                >
-                                    <div
-                                        role="tabpanel"
-                                        aria-hidden="false"
-                                        className="tab-pane active card-body"
-                                        id="__BVID__242"
-                                        aria-labelledby="__BVID__242___BV_tab_button__"
-                                    >
-                                        <div id="buddy-input ">
-                                            <form className>
-                                                <fieldset
-                                                    className="form-group"
-                                                    id="__BVID__216"
-                                                >
-                                                    <h3>
-                                                        <legend
-                                                            tabIndex={-1}
-                                                            className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                                            id="__BVID__216__BV_label_"
-                                                        >
-                                                            <p style={{ lineHeight: "40%" }}>
-                                                                {t("Withdraw.1")}
-                                                            </p>
-                                                        </legend>
-                                                    </h3>
-                                                    <div>
-                                                        <input
-
-                                                            ref={withDrawValue}
-
-                                                            type="text"
-                                                            placeholder="0"
-                                                            className="form-control"
-                                                            id="__BVID__217"
-                                                        />
-                                                    </div>
-                                                </fieldset>
-                                                <div>
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-outline-light fst-italic"
-
-                                                        onClick={() => WithdrawAVAX()}
-                                                    >
-                                                        {t("Withdraw.1")}
-                                                    </button>
-                                                </div>
-
-                                            </form>
-                                        </div>
-
-
-                                        <div id="buddy-input  mt-2">
-                                            <form className>
-                                                <fieldset
-                                                    className="form-group"
-                                                    id="__BVID__216"
-                                                >
-                                                    <h3>
-                                                        <legend
-                                                            tabIndex={-1}
-                                                            className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                                            id="__BVID__216__BV_label_"
-                                                        >
-                                                            <p className='mt-4' style={{ lineHeight: "40%" }}>
-                                                                {t("AddAddressToWhiteList.1")}
-                                                            </p>
-                                                        </legend>
-                                                    </h3>
-                                                    <div>
-                                                        <input
-
-                                                            type="text"
-                                                            ref={AddAdress_Value}
-                                                            placeholder="Address"
-                                                            className="form-control"
-                                                            id="__BVID__217"
-                                                        />
-
-
-                                                    </div>
-                                                </fieldset>
-                                                <div>
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-outline-light fst-italic" onClick={() => addAddressesToWhitelist()}
-                                                    >
-                                                        {t("Add Addresses ToWhiteList")}
-                                                    </button>
-                                                </div>
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div> */}
 
                 </div>
             </div>

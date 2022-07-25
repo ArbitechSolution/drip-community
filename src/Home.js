@@ -8,11 +8,6 @@ import Reservoir from "./components/Reservoir/Reservoir";
 function Home() {
   return (
     <div >
-      {/* <BrowserRouter> */}
-      {/* <Router> */}
-      
-      {/* </Router> */}
-      {/* </BrowserRouter> */}
     </div>
   );
 }

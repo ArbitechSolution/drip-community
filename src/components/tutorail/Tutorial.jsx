@@ -7,13 +7,9 @@ function Tutorial() {
     <div className='tut-main fluid-container' >
         <div className='row'>
           <div className='col-md-12'>
-            {/* <div className="video"> */}
                <video  controls className='Videowidth'>
                <source src={tutorial} type="video/ogg"/>
                </video>
-        {/* <ReactPlayer url={tutorial} controls={true} /> */}
-            {/* </div> */}
-
           </div>
         </div>
     </div>

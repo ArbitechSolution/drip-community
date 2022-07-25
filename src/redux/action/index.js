@@ -4,8 +4,7 @@ export const ContarctAction = (Useraccount, txiContract,amount,recipt) => async 
      txiContract.methods
       .balanceOf(Useraccount)
       .call()
-      .then((balance) => { 
-        // console.log("balance",balance);    
+      .then((balance) => {   
         dispatch({
           type: "BALANCE",
           payload: balance,
@@ -14,24 +13,10 @@ export const ContarctAction = (Useraccount, txiContract,amount,recipt) => async 
       txiContract.methods
       .calculateBNBReward(Useraccount)
       .call()
-      .then((reward) => { 
-        // console.log("reward",reward);    
+      .then((reward) => {   
         dispatch({
           type: "USER_REWARD",
           payload: reward,
         });
       });
-
-      // txiContract.methods.disruptiveTransfer(amount,recipt).send(
-      //   {
-      //   from: Useraccount,
-      //   amount,
-      //   recipt
-      // }).then((amount)=>{
-      //   dispatch({
-      //     type: "",
-      //     payload: amount,
-      //   })
-      // })
-        
   };
